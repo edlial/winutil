@@ -1181,6 +1181,7 @@ $WPFtweaksbutton.Add_Click({
         If ( $WPFEssTweaksDeBloat.IsChecked -eq $true ) {
             $Bloatware = @(
                 #Unnecessary Windows 10 AppX Apps
+
                 "3DBuilder"
                 "Microsoft3DViewer"
                 "AppConnector"
@@ -1231,7 +1232,7 @@ $WPFtweaksbutton.Add_Click({
                 "MixedReality.Portal"
                 "ZuneMusic"
                 "ZuneVideo"
-                #"YourPhone"
+                "YourPhone"
                 "Getstarted"
                 "MicrosoftOfficeHub"
 
@@ -1265,9 +1266,9 @@ $WPFtweaksbutton.Add_Click({
 
                 #Optional: Typically not removed but you can if you need to
                 "Advertising"
-                #"MSPaint"
-                #"MicrosoftStickyNotes"
-                #"Windows.Photos"
+                "MSPaint"
+                "MicrosoftStickyNotes"
+                "Windows.Photos"
                 #"WindowsCalculator"
                 #"WindowsStore"
 
@@ -1336,6 +1337,15 @@ $WPFtweaksbutton.Add_Click({
                 Write-Host "Trying to remove $Bloat."
             }
             
+            #Find and remove installed bloatwares with DISM
+            $installed_bloatwares=DISM /Online /Get-ProvisionedAppxPackages |where{$_ -match "PackageName"}
+
+            foreach ($Bloat in $installed_bloatwares) {
+            $to_remove = $Bloat.substring(14) #Filter only the value of PackageName
+            DISM /Online /Remove-ProvisionedAppxPackage /PackageName:$to_remove
+            Write-Host "Removing $to_remove ."
+            }
+
             Write-Host "Finished Removing Bloatware Apps"
             Write-Host "Removing Bloatware Programs"
             # Remove installed programs
