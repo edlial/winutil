@@ -1097,7 +1097,7 @@
   },
   "EssTweaksRemoveEdge": {
     "InvokeScript": [
-      "Invoke-WebRequest -useb https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/Edge_Removal.bat | Invoke-Expression"
+      "Invoke-WebRequest -useb https://raw.githubusercontent.com/edlial/winutil/main/Edge_Removal.bat | Invoke-Expression"
     ]
   },
   "MiscTweaksDisableNotifications": {

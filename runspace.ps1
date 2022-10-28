@@ -1,13 +1,6 @@
 #for CI/CD
 $BranchToUse = 'main'
 
-<#
-.NOTES
-    Author              : @ChrisTitusTech   
-    Runspace Author     : @DeveloperDurp
-    Version 0.1
-#>
-
 #region Variables
 
     $sync = [Hashtable]::Synchronized(@{})
@@ -1310,13 +1303,13 @@ else{
 
     if($IsAdmin -eq $false){
         Write-Output "This application needs to be run as an administrator. Attempting relaunch"
-        Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "iwr -useb https://christitus.com/win | iex"
+        Start-Process -Verb runas -FilePath powershell.exe -ArgumentList "iwr -useb https://raw.githubusercontent.com/edlial/winutil/main/winutil.ps1 | iex"
         break
     }
 
-    $inputXML = (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/ChrisTitusTech/winutil/$branch/MainWindow.xaml")
+    $inputXML = (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/edlial/winutil/$branch/MainWindow.xaml")
     $configs | ForEach-Object {
-        $sync["$psitem"] = Invoke-RestMethod "https://raw.githubusercontent.com/ChrisTitusTech/winutil/$branch/config/$psitem.json"
+        $sync["$psitem"] = Invoke-RestMethod "https://raw.githubusercontent.com/edlial/winutil/$branch/config/$psitem.json"
     }
 }
 
@@ -1386,13 +1379,13 @@ Supported arguments:
 
 Example usage: 
   
-    $env:args = "Install:git.git,WinDirStat.WinDirStat "; iwr -useb https://christitus.com/win | iex
+    $env:args = "Install:git.git,WinDirStat.WinDirStat "; iwr -useb https://raw.githubusercontent.com/edlial/winutil/main/winutil.ps1 | iex
 
-    $env:args = "Tweaks:EssTweaksLoc,EssTweaksServices"; iwr -useb https://christitus.com/win | iex
+    $env:args = "Tweaks:EssTweaksLoc,EssTweaksServices"; iwr -useb https://raw.githubusercontent.com/edlial/winutil/main/winutil.ps1 | iex
 
-    $env:args = "DefaultUpdates"; iwr -useb https://christitus.com/win | iex
+    $env:args = "DefaultUpdates"; iwr -useb https://raw.githubusercontent.com/edlial/winutil/main/winutil.ps1 | iex
 
-    $env:args = "Install:git.git,WinDirStat.WinDirStat Tweaks:EssTweaksLoc,EssTweaksServices DefaultUpdates"; iwr -useb https://christitus.com/win | iex
+    $env:args = "Install:git.git,WinDirStat.WinDirStat Tweaks:EssTweaksLoc,EssTweaksServices DefaultUpdates"; iwr -useb https://raw.githubusercontent.com/edlial/winutil/main/winutil.ps1 | iex
 
 #>
 
