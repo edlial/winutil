@@ -37,27 +37,18 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object { Set-Variable -Name "WPF$($_.N
 Function Get-FormVariables {
     #If ($global:ReadmeDisplay -ne $true) { Write-host "If you need to reference this display again, run Get-FormVariables" -ForegroundColor Yellow; $global:ReadmeDisplay = $true }
     
-
-    write-host ""                                                                                                                             
-    write-host "    CCCCCCCCCCCCCTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT   "
-    write-host " CCC::::::::::::CT:::::::::::::::::::::TT:::::::::::::::::::::T   "
-    write-host "CC:::::::::::::::CT:::::::::::::::::::::TT:::::::::::::::::::::T  "
-    write-host "C:::::CCCCCCCC::::CT:::::TT:::::::TT:::::TT:::::TT:::::::TT:::::T "
-    write-host "C:::::C       CCCCCCTTTTTT  T:::::T  TTTTTTTTTTTT  T:::::T  TTTTTT"
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C                     T:::::T                T:::::T        "
-    write-host "C:::::C       CCCCCC        T:::::T                T:::::T        "
-    write-host "C:::::CCCCCCCC::::C      TT:::::::TT            TT:::::::TT       "
-    write-host "CC:::::::::::::::C       T:::::::::T            T:::::::::T       "
-    write-host "CCC::::::::::::C         T:::::::::T            T:::::::::T       "
-    write-host "  CCCCCCCCCCCCC          TTTTTTTTTTT            TTTTTTTTTTT       "
     write-host ""
-    write-host "====Chris Titus Tech====="
-    write-host "=====Windows Toolbox====="
+    Write-Host " _____                _                                      _      _______  __  __ "
+    write-host "|  __ \              | |                                    | |    |__   __||  \/  |"
+    write-host "| |__) |  ___  _ __  | |_   __ _   __ _  _   _   __ _  _ __ | | __    | |   | \  / |"
+    write-host "|  ___/  / _ \| '_ \ | __| / _` | / _` || | | | / _` || '__|| |/ /    | |   | |\/| |"
+    write-host "| |     |  __/| | | || |_ | (_| || (_| || |_| || (_| || |   |   <     | |   | |  | |"
+    write-host "|_|      \___||_| |_| \__| \__,_| \__, | \__,_| \__,_||_|   |_|\_\    |_|   |_|  |_|"
+    write-host "                                     | |                                            "
+    write-host "                                     |_|                                            "
+    write-host ""
+    write-host "### 5Q | Edli ###"
+    write-host "### Pentaquark TM ###"
                            
  
     #====DEBUG GUI Elements====
@@ -1243,7 +1234,9 @@ $WPFtweaksbutton.Add_Click({
                 "ScreenSketch"
                 "TCUI"
                 "XboxGameOverlay"
+                "XboxGamingOverlay"
                 "XboxGameCallableUI"
+                "XboxIdentityProvider"
                 "XboxSpeechToTextOverlay"
                 "MixedReality.Portal"
                 "ZuneMusic"
@@ -1348,11 +1341,11 @@ $WPFtweaksbutton.Add_Click({
             Write-Host "Removing Bloatware"
 
             foreach ($Bloat in $Bloatware) {
-                Get-AppxPackage "*$Bloat*" | Remove-AppxPackage -ErrorAction SilentlyContinue
+                Get-AppxPackage -allusers  "*$Bloat*" | Remove-AppxPackage -ErrorAction SilentlyContinue
                 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like "*$Bloat*" | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
                 Write-Host "Trying to remove $Bloat."
             }
-
+            
             Write-Host "Finished Removing Bloatware Apps"
             Write-Host "Removing Bloatware Programs"
             # Remove installed programs
