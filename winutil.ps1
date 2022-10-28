@@ -37,15 +37,12 @@ $xaml.SelectNodes("//*[@Name]") | ForEach-Object { Set-Variable -Name "WPF$($_.N
 Function Get-FormVariables {
     #If ($global:ReadmeDisplay -ne $true) { Write-host "If you need to reference this display again, run Get-FormVariables" -ForegroundColor Yellow; $global:ReadmeDisplay = $true }
     
-    write-host ""
-    Write-Host "  _____           _                               _      _______ __  __ "
-    Write-Host " |  __ \         | |                             | |    |__   __|  \/  |"
-    Write-Host " | |__) |__ _ __ | |_ __ _  __ _ _   _  __ _ _ __| | __    | |  | \  / |"
-    Write-Host " |  ___/ _ \ '_ \| __/ _` |/ _` | | | |/ _` | '__| |/ /    | |  | |\/| |"
-    Write-Host " | |  |  __/ | | | || (_| | (_| | |_| | (_| | |  |   <     | |  | |  | |"
-    Write-Host " |_|   \___|_| |_|\__\__,_|\__, |\__,_|\__,_|_|  |_|\_\    |_|  |_|  |_|"
-    Write-Host "                              | |                                       "
-    Write-Host "                              |_|                                       "
+    write-host "██████  ███████ ███    ██ ████████  █████   ██████  ██    ██  █████  ██████  ██   ██     ████████ ███    ███"
+    write-host "██   ██ ██      ████   ██    ██    ██   ██ ██    ██ ██    ██ ██   ██ ██   ██ ██  ██         ██    ████  ████"
+    write-host "██████  █████   ██ ██  ██    ██    ███████ ██    ██ ██    ██ ███████ ██████  █████          ██    ██ ████ ██"
+    write-host "██      ██      ██  ██ ██    ██    ██   ██ ██ ▄▄ ██ ██    ██ ██   ██ ██   ██ ██  ██         ██    ██  ██  ██"
+    write-host "██      ███████ ██   ████    ██    ██   ██  ██████   ██████  ██   ██ ██   ██ ██   ██        ██    ██      ██"
+    write-host "                                               ▀▀                                                           "
     write-host ""
     write-host "### 5Q | Edli ###"
     write-host "### Pentaquark TM ###"
